@@ -5,36 +5,25 @@ using TMPro;
 
 public class UIBehaviour : MonoBehaviour
 {
-    public TextMeshProUGUI ModeLabel;
     public TextMeshProUGUI ModeInstructions;
-
     public TextMeshProUGUI Instructions;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject UIOutline;
 
     public void SetFoldModeActive(bool isActive)
     {
         if (isActive)
         {
-            ModeLabel.text = "Folding Mode";
-            ModeInstructions.text = "Press [SPACE] to switch to Movement Mode";
+            Cursor.visible = true;
+            UIOutline.SetActive(true);
+            ModeInstructions.text = "Press [SPACE] for camera/fish movement";
             Instructions.text = "Click On Panels to Fold Them";
         }
         else
         {
-            ModeLabel.text = "Movement Mode Mode";
-            ModeInstructions.text = "Press [SPACE] to switch to Folding Mode";
-            Instructions.text = "Move Fish with WASD and Arrow Keys\nMove Camera with Mouse";
+            Cursor.visible = false;
+            UIOutline.SetActive(false);
+            ModeInstructions.text = "Press [SPACE] to switch to folding mode";
+            Instructions.text = "Move Fish with WASD/Arrow Keys\nMove Camera with Mouse";
         }
     }
 }

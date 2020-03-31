@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class OrigamiManager : MonoBehaviour
 {
+    public List<EdgeWall> teleportEdges = new List<EdgeWall>();
     private List<OrigamiFace> faces = new List<OrigamiFace>();
-    public TeleportationManager teleportationManager;
+
+    //public TeleportationManager teleportationManager;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,7 @@ public class OrigamiManager : MonoBehaviour
             }
         }
 
-        teleportationManager.SetEdges(allFacesFolded);
+        // Set the stuff to whatever
+        //teleportationManager.SetEdges(allFacesFolded);
     }
 }

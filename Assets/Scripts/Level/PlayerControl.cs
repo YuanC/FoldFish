@@ -13,9 +13,16 @@ public class PlayerControl : MonoBehaviour
     public float MouseSensitivity = 10f;
     public Vector3 RotateTarget = new Vector3(0,0,0);
 
+    // Cursor Stuffs
+    public Texture2D CursorDefault;
+    public Texture2D CursorHover;
+    private Vector2 cursorHotspot;
+
     // Start is called before the first frame update
     void Start()
     {
+        cursorHotspot = new Vector2(CursorDefault.width, CursorDefault.height);
+        Cursor.SetCursor(CursorDefault, Vector2.zero, CursorMode.Auto);
         uiBehaviour.SetFoldModeActive(isFoldMode);
     }
 
@@ -34,19 +41,23 @@ public class PlayerControl : MonoBehaviour
 
         if (isFoldMode) // Control Origami Figure
         {
-            Cursor.visible = true;
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Input.GetMouseButtonDown(0)) // User clicks on a panel
+            if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                Debug.Log("Raycast");
+                OrigamiFace oFace = hit.transform.GetComponentInParent<OrigamiFace>();
 
-                if (Physics.Raycast(ray, out hit, 100.0f))
+                Cursor.SetCursor((oFace ? CursorHover : CursorDefault), cursorHotspot, CursorMode.Auto);
+
+                if (Input.GetMouseButtonDown(0)) // User clicks on a panel
                 {
-                    OrigamiFace oFace = hit.transform.GetComponentInParent<OrigamiFace>();
                     oFace?.ToggleFold();
                 }
+            }
+            else
+            {
+                Cursor.SetCursor(CursorDefault, cursorHotspot, CursorMode.Auto);
             }
         }
         else // Control Fish And Camera

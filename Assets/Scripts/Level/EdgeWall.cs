@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-w
+
 public class EdgeWall : MonoBehaviour
 {
     private EdgeWall pair;
@@ -13,24 +13,18 @@ public class EdgeWall : MonoBehaviour
             pair = value;
 
             // Assign paired fishcloners
-            if (pair != null)
-            {
-                FishCloner.PairedHandler = pair.FishCloner;
-                WallCollider.enabled = false;
-            }
-            else
-            {
-                FishCloner.PairedHandler = null;
-                WallCollider.enabled = true;
-            }
+            FishCloner.PairedHandler = pair != null ? pair.FishCloner : null;
+            ActiveWallObjects.SetActive(pair == null);
+            InactiveWallObjects.SetActive(pair != null);
         }
     }
 
     public FishCloneHandler FishCloner { get; set; }
-    public Transform PivotPoint;
+    public Collider CloneTrigger;
 
     public Collider TeleportationTrigger;
-    public Collider WallCollider;
+    public GameObject ActiveWallObjects;
+    public GameObject InactiveWallObjects;
 
     // Start is called before the first frame update
     void Start()
