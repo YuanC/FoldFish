@@ -525,7 +525,7 @@ PrefabInstance:
     - target: {fileID: 7928519911324294776, guid: b76b00ae080916443ae16713e893dca9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7928519911324294776, guid: b76b00ae080916443ae16713e893dca9,
         type: 3}
@@ -585,6 +585,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 397881985}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &397881987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5843832214950494834, guid: b76b00ae080916443ae16713e893dca9,
+    type: 3}
+  m_PrefabInstance: {fileID: 397881985}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58815dd5d792be1468e62d2e6ab3e2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &439349947
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ba4f1e952258a4fa6a7c8a7ee1de58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportEdges: []
+  faces: []
 --- !u!1 &441827282
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebea2e75d50aca42af43eee6afdd3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Edges:
+  - {fileID: 397881987}
   IsFolded: 0
   rotations:
   - 0
@@ -2163,6 +2177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebea2e75d50aca42af43eee6afdd3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Edges:
+  - {fileID: 7928519911205226867}
   IsFolded: 0
   rotations:
   - 0
@@ -2899,10 +2915,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 387161378}
     m_Modifications:
+    - target: {fileID: 1524824502, guid: c47a0a9d294ed954a9087c38e013a854, type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6086785898427943810, guid: c47a0a9d294ed954a9087c38e013a854,
         type: 3}
       propertyPath: m_Name
       value: Fish
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086785898427943810, guid: c47a0a9d294ed954a9087c38e013a854,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6086785898427943813, guid: c47a0a9d294ed954a9087c38e013a854,
         type: 3}
@@ -3168,3 +3193,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b76b00ae080916443ae16713e893dca9, type: 3}
+--- !u!114 &7928519911205226867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5843832214950494834, guid: b76b00ae080916443ae16713e893dca9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7928519911205226866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58815dd5d792be1468e62d2e6ab3e2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

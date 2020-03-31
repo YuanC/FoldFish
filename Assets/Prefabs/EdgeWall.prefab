@@ -121,7 +121,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2723876979923919219}
-  - {fileID: 1035306965155001778}
   m_Father: {fileID: 7928519911324294776}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -186,6 +185,7 @@ MonoBehaviour:
   CloneOriginPoint: {x: 0, y: 0, z: 0}
   ClonePrefab: {fileID: 2260820881787320882, guid: 06dc87aa82cef854894921feb0a6022e,
     type: 3}
+  Edge: {fileID: 5843832214950494834}
 --- !u!1 &3884407989627401432
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,50 +217,6 @@ Transform:
   m_Father: {fileID: 7928519911324294776}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5305830465013120357
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1035306965155001778}
-  - component: {fileID: 5382884545357406879}
-  m_Layer: 0
-  m_Name: TeleportTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1035306965155001778
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5305830465013120357}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.10000001, z: 0.1}
-  m_Children: []
-  m_Father: {fileID: 107138925213009308}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5382884545357406879
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5305830465013120357}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &6139700791226206672
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58815dd5d792be1468e62d2e6ab3e2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CloneTrigger: {fileID: 2110105455479650198}
-  TeleportationTrigger: {fileID: 5382884545357406879}
+  TeleportationTrigger: {fileID: 0}
   ActiveWallObjects: {fileID: 178920853802127688}
   InactiveWallObjects: {fileID: 3884407989627401432}

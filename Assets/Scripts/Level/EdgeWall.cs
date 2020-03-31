@@ -13,16 +13,24 @@ public class EdgeWall : MonoBehaviour
             pair = value;
 
             // Assign paired fishcloners
-            FishCloner.PairedHandler = pair != null ? pair.FishCloner : null;
-            ActiveWallObjects.SetActive(pair == null);
-            InactiveWallObjects.SetActive(pair != null);
+            if (value != null)
+            {
+                FishCloner.PairedHandler = pair.FishCloner;
+                ActiveWallObjects.SetActive(true);
+                InactiveWallObjects.SetActive(false);
+            }
+            else
+            {
+                FishCloner.PairedHandler = null;
+                FishCloner.Deactivate();
+                ActiveWallObjects.SetActive(false);
+                InactiveWallObjects.SetActive(true);
+            }
         }
     }
 
     public FishCloneHandler FishCloner { get; set; }
-    public Collider CloneTrigger;
 
-    public Collider TeleportationTrigger;
     public GameObject ActiveWallObjects;
     public GameObject InactiveWallObjects;
 
@@ -30,6 +38,7 @@ public class EdgeWall : MonoBehaviour
     void Start()
     {
         FishCloner = GetComponentInChildren<FishCloneHandler>();
+        Pair = null;
     }
 
     // Helper function to pair walls

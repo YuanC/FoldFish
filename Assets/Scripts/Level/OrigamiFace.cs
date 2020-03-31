@@ -5,6 +5,8 @@ using UnityEngine;
 // FoldingBehaviour
 public class OrigamiFace : MonoBehaviour
 {
+    public List<EdgeWall> Edges;
+
     public bool IsFolded;
     private bool isFolded;
 

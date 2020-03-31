@@ -1,36 +1,50 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 
 public class FishCloneHandler : MonoBehaviour
 {
     public FishCloneHandler PairedHandler;
-    public Vector3 CloneOriginPoint;
     public GameObject ClonePrefab;
+    public EdgeWall Edge;
 
     private GameObject Clone;
     private Vector3 wallPosition;
 
-    private void Start()
+    public void OnTriggerStay(Collider other)
     {
-        //wallPosition = GetComponentInParent();
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "player")
+        if (other.gameObject.tag == "Player")
         {
             if (PairedHandler) // If the edge is paired
             {
-                if (!Clone) // Add clone instance if pairs are established
-                {
-                    //Vector3 clonePos = other.transform.position - 
-                    //Instantiate(ClonePrefab, , Vector3 position, Quaternion rotation, Transform parent);
-                }
+                // Check if fish has passed the teleportation thingy
+                FishMovement fishMov = other.GetComponentInParent<FishMovement>();
+                Vector3 fishDelta = Edge.transform.InverseTransformPoint(fishMov.transform.position);
 
-                // TODO: Update clone position/rotation to match that of real fishy
+                Vector3 reflectedDelta = Vector3.Reflect(fishDelta, Vector3.up);
+                Debug.Log(fishDelta.normalized);
+                Debug.Log(reflectedDelta.normalized);
+                Transform pairedTrans = PairedHandler.GetComponentInParent<EdgeWall>().transform;
+                Vector3 newPos = pairedTrans.TransformPoint(reflectedDelta);
+
+                // Teleport that fish if the boundary is crossed!
+                if (fishDelta.y < -0.01)
+                {
+                    fishMov.transform.position = newPos;
+                }
+                else // Create/update clone
+                {
+                    if (!Clone) // Add clone instance if pairs are established
+                    {
+                        Clone = Instantiate(ClonePrefab, newPos, fishMov.GetComponentInChildren<SpriteRenderer>().transform.rotation);
+                    }
+                    else
+                    {
+                        Clone.transform.position = newPos;
+                        Clone.GetComponentInChildren<SpriteRenderer>().transform.rotation = fishMov.GetComponentInChildren<SpriteRenderer>().transform.rotation;
+                    }
+                }
             }
-            else // Delete clone instance pairs are deleted
+            else // Delete clone instance as pairs are deleted
             {
                 if (Clone != null)
                 {
@@ -40,10 +54,18 @@ public class FishCloneHandler : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void Deactivate()
+    {
+        if (Clone != null)
+        {
+            Destroy(Clone);
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
     {
         // Destroy clone instance
-        if (other.tag == "player")
+        if (other.tag == "Player")
         {
             if (Clone != null)
             {

@@ -10,22 +10,18 @@ public class ColliderEvent : UnityEvent<Collider>
 
 public class ColliderEventDelegator : MonoBehaviour
 {
-    public ColliderEvent EnterCallback;
-    public ColliderEvent StayCallback;
-    public ColliderEvent ExitCallback;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        EnterCallback.Invoke(other);
-    }
+    public ColliderEvent TriggerStayCallback;
+    public ColliderEvent TriggerExitCallback;
 
     private void OnTriggerStay(Collider other)
     {
-        StayCallback.Invoke(other);
+        Debug.Log(other);
+        TriggerStayCallback.Invoke(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        ExitCallback.Invoke(other);
+        Debug.Log(other);
+        TriggerExitCallback.Invoke(other);
     }
 }

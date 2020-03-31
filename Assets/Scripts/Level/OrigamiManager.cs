@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class OrigamiManager : MonoBehaviour
 {
-    public List<EdgeWall> teleportEdges = new List<EdgeWall>();
-    private List<OrigamiFace> faces = new List<OrigamiFace>();
+    public List<OrigamiFace> faces = new List<OrigamiFace>();
 
     //public TeleportationManager teleportationManager;
 
@@ -19,19 +18,15 @@ public class OrigamiManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool allFacesFolded = true;
-
-        // Check if origami faces are folded, and update as necessary
-        foreach(OrigamiFace face in faces)
+        // Only for level 1
+        if (faces[0].IsFolded && faces[1].IsFolded)
         {
-            if (face.IsFolded == false)
-            {
-                allFacesFolded = false;
-                break;
-            }
+            EdgeWall.PairWalls(faces[0].Edges[0], faces[1].Edges[0]);
         }
-
-        // Set the stuff to whatever
-        //teleportationManager.SetEdges(allFacesFolded);
+        else
+        {
+            faces[0].Edges[0].Pair = null;
+            faces[1].Edges[0].Pair = null;
+        }
     }
 }
