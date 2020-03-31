@@ -67,6 +67,9 @@ public class PlayerControl : MonoBehaviour
             float mouseDeltaX = Input.GetAxisRaw("Mouse X");
             transform.RotateAround(RotateTarget, Vector3.up, mouseDeltaX * MouseSensitivity);
 
+            float mouseDeltaY = Input.GetAxisRaw("Mouse Y");
+            transform.RotateAround(RotateTarget, Vector3.right, -mouseDeltaY * MouseSensitivity);
+            
             transform.LookAt(Vector3.zero);
         }
     }

@@ -9,7 +9,7 @@ public class Key : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Renderer>().material.color = Door.GetComponentInChildren<Renderer>().material.color;
+        GetComponentInChildren<Renderer>().material.color = Door.GetComponentInChildren<Renderer>().material.color;
     }
 
     private void OnTriggerEnter(Collider other)

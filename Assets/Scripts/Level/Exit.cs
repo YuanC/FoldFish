@@ -5,8 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
+    public string NextLevelName;
+
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("Finished");
+        if (string.IsNullOrWhiteSpace(NextLevelName))
+        {
+            Application.Quit();
+        }
+        else
+        {
+            SceneManager.LoadScene(NextLevelName);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ using UnityEngine;
 public class OrigamiFace : MonoBehaviour
 {
     public List<EdgeWall> Edges;
+
+    public string RotAxis;
 
     public bool IsFolded;
     private bool isFolded;
@@ -37,13 +40,35 @@ public class OrigamiFace : MonoBehaviour
                 moving = false;
                 IsFolded = isFolded;
 
-                transform.rotation = Quaternion.Euler(transform.rotation.x, targetRot, transform.rotation.z);
+                if (String.Equals(RotAxis, "x"))
+                {
+                    transform.rotation = Quaternion.Euler(targetRot, transform.rotation.y, transform.rotation.z);
+                }
+                else if (String.Equals(RotAxis, "y"))
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, targetRot, transform.rotation.z);
+                }
+                else if (String.Equals(RotAxis, "z"))
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, targetRot);
+                }
             }
             else
             {
                 float angle = Mathf.LerpAngle(originalRot, targetRot, rotTimer);
 
-                transform.rotation = Quaternion.Euler(transform.rotation.x, angle, transform.rotation.z);
+                if (String.Equals(RotAxis, "x"))
+                {
+                    transform.rotation = Quaternion.Euler(angle, transform.rotation.y, transform.rotation.z);
+                }
+                else if (String.Equals(RotAxis, "y"))
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, angle, transform.rotation.z);
+                }
+                else if (String.Equals(RotAxis, "z"))
+                {
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
+                }
             }
         }
     }
