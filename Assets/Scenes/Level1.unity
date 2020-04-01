@@ -1530,6 +1530,8 @@ MonoBehaviour:
   RotateTarget: {x: 0, y: 0, z: 0}
   CursorDefault: {fileID: 2800000, guid: 3790912c07ae61546905f75d42a67af4, type: 3}
   CursorHover: {fileID: 2800000, guid: b9d0dd18c20d9db4b88bf87021173689, type: 3}
+  minTurnAngle: -90
+  maxTurnAngle: 90
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2612,7 +2614,7 @@ PrefabInstance:
     - target: {fileID: 5132381473234613279, guid: 917685e70cf9bb643a12fcc3e45987ba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 5132381473234613279, guid: 917685e70cf9bb643a12fcc3e45987ba,
         type: 3}
