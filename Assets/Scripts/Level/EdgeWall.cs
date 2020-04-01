@@ -47,4 +47,10 @@ public class EdgeWall : MonoBehaviour
         wall1.Pair = wall2;
         wall2.Pair = wall1;
     }
+
+    public static void UnPairWalls(EdgeWall wall1, EdgeWall wall2)
+    {
+        wall1.Pair = null;
+        wall2.Pair = null;
+    }
 }

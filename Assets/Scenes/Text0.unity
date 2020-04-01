@@ -741,5 +741,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f87e510990bc24e844b149e5013663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0.5
+  timer: 1
   NextSceneName: Level0

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OrigamiManager : MonoBehaviour
 {
@@ -15,18 +16,41 @@ public class OrigamiManager : MonoBehaviour
         faces.AddRange(GetComponentsInChildren<OrigamiFace>());
     }
 
-    // Update is called once per frame
+    // Context for connecting the edges upon folding
     void Update()
     {
         // Only for level 1
-        if (faces[0].IsFolded && faces[1].IsFolded)
+
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName == "Level1")
         {
-            EdgeWall.PairWalls(faces[0].Edges[0], faces[1].Edges[0]);
+            if (faces[0].IsFolded && faces[1].IsFolded)
+            {
+                EdgeWall.PairWalls(faces[0].Edges[0], faces[1].Edges[0]);
+            }
+            else
+            {
+                faces[0].Edges[0].Pair = null;
+                faces[1].Edges[0].Pair = null;
+            }
         }
-        else
+        else if (sceneName == "Level2")
         {
-            faces[0].Edges[0].Pair = null;
-            faces[1].Edges[0].Pair = null;
+            if (faces[0].IsFolded &&
+                faces[1].IsFolded &&
+                faces[2].IsFolded &&
+                faces[3].IsFolded &&
+                faces[4].IsFolded &&
+                faces[5].IsFolded &&
+                faces[6].IsFolded)
+            {
+                EdgeWall.PairWalls(faces[2].Edges[0], faces[6].Edges[0]);
+            }
+            else
+            {
+                EdgeWall.UnPairWalls(faces[2].Edges[0], faces[6].Edges[0]);
+            }
         }
     }
 }

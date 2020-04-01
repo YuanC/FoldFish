@@ -42,15 +42,15 @@ public class OrigamiFace : MonoBehaviour
 
                 if (String.Equals(RotAxis, "x"))
                 {
-                    transform.rotation = Quaternion.Euler(targetRot, transform.rotation.y, transform.rotation.z);
+                    transform.localRotation = Quaternion.Euler(targetRot, transform.rotation.y, transform.rotation.z);
                 }
                 else if (String.Equals(RotAxis, "y"))
                 {
-                    transform.rotation = Quaternion.Euler(transform.rotation.x, targetRot, transform.rotation.z);
+                    transform.localRotation = Quaternion.Euler(transform.rotation.x, targetRot, transform.rotation.z);
                 }
                 else if (String.Equals(RotAxis, "z"))
                 {
-                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, targetRot);
+                    transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, targetRot);
                 }
             }
             else
@@ -59,15 +59,15 @@ public class OrigamiFace : MonoBehaviour
 
                 if (String.Equals(RotAxis, "x"))
                 {
-                    transform.rotation = Quaternion.Euler(angle, transform.rotation.y, transform.rotation.z);
+                    transform.localRotation = Quaternion.Euler(angle, transform.rotation.y, transform.rotation.z);
                 }
                 else if (String.Equals(RotAxis, "y"))
                 {
-                    transform.rotation = Quaternion.Euler(transform.rotation.x, angle, transform.rotation.z);
+                    transform.localRotation = Quaternion.Euler(transform.rotation.x, angle, transform.rotation.z);
                 }
                 else if (String.Equals(RotAxis, "z"))
                 {
-                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
+                    transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, angle);
                 }
             }
         }

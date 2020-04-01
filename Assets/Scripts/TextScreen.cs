@@ -11,24 +11,26 @@ public class TextScreen : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         if (timer > 0)
         {
             timer -= Time.deltaTime;
         }
         else
         {
-            if (!String.IsNullOrWhiteSpace(NextSceneName))
+            if (Input.GetKeyDown(KeyCode.Space) ||
+                Input.GetKeyDown(KeyCode.Return) ||
+                Input.GetMouseButtonDown(0) ||
+                Input.GetMouseButtonDown(1))
             {
-                if (Input.GetKeyDown(KeyCode.Space) ||
-                    Input.GetKeyDown(KeyCode.Return) ||
-                    Input.GetMouseButtonDown(0) ||
-                    Input.GetMouseButtonDown(1))
-                SceneManager.LoadScene(NextSceneName);
-            }
-            else
-            {
-                Application.Quit();
+                if (!String.IsNullOrWhiteSpace(NextSceneName))
+                {
+                    SceneManager.LoadScene(NextSceneName);
+                }
+                else
+                {
+                    Application.Quit();
+                }
             }
         }
 
