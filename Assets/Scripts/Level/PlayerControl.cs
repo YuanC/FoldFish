@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Handles input mode switching, and folding interactions
 public class PlayerControl : MonoBehaviour
 {
     public FishMovement fishMovement;
@@ -19,11 +20,10 @@ public class PlayerControl : MonoBehaviour
     public Texture2D CursorHover;
     private Vector2 cursorHotspot;
 
-    public float minTurnAngle = -90.0f;
-    public float maxTurnAngle = 90.0f;
+    public float minTurnAngle = -80.0f;
+    public float maxTurnAngle = 80.0f;
     private float rotX;
 
-    // Start is called before the first frame update
     void Start()
     {
         cursorHotspot = new Vector2(CursorDefault.width, CursorDefault.height);
@@ -31,7 +31,6 @@ public class PlayerControl : MonoBehaviour
         uiBehaviour.SetFoldModeActive(isFoldMode);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -76,14 +75,14 @@ public class PlayerControl : MonoBehaviour
 
             if (SceneManager.GetActiveScene().name == "Level2")
             {
-                // get the mouse inputs
+                // Get the mouse inputs
                 float y = Input.GetAxis("Mouse X") * MouseSensitivity;
                 rotX += Input.GetAxis("Mouse Y") * MouseSensitivity;
 
-                // clamp the vertical rotation
+                // Clamp the vertical rotation
                 rotX = Mathf.Clamp(rotX, minTurnAngle, maxTurnAngle);
 
-                // rotate the camera
+                // Rotate the camera
                 transform.eulerAngles = new Vector3(-rotX, transform.eulerAngles.y + y, 0);
             }
             else

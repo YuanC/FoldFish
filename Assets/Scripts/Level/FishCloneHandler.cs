@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine; 
 
+// Creates a clone fish sprite for continuous movement between portals
+// Activates if the fish is close to the portal
 public class FishCloneHandler : MonoBehaviour
 {
     public FishCloneHandler PairedHandler;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Handles the UI per level upon switching between folding and movement modes
 public class UIBehaviour : MonoBehaviour
 {
     public TextMeshProUGUI ModeInstructions;

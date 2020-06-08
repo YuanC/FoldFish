@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Connects faces upon folding depending on the level
 public class OrigamiManager : MonoBehaviour
 {
     public List<OrigamiFace> faces = new List<OrigamiFace>();
 
-    //public TeleportationManager teleportationManager;
-
-    // Start is called before the first frame update
     void Start()
     {
         // Get list of origami faces
@@ -19,8 +17,6 @@ public class OrigamiManager : MonoBehaviour
     // Context for connecting the edges upon folding
     void Update()
     {
-        // Only for level 1
-
         string sceneName = SceneManager.GetActiveScene().name;
 
         if (sceneName == "Level1")

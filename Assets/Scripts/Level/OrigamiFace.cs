@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// FoldingBehaviour
+// Handles the folding behaviour of each face
 public class OrigamiFace : MonoBehaviour
 {
     public List<EdgeWall> Edges;
@@ -34,8 +34,7 @@ public class OrigamiFace : MonoBehaviour
             float targetRot = isFolded ? rotations[1] : rotations[0];
             float originalRot = isFolded ? rotations[0] : rotations[1];
 
-            // If the target has been reached.
-            if (rotTimer > rotDuration)
+            if (rotTimer > rotDuration) // If the target has been reached, set the angle to new value
             {
                 moving = false;
                 IsFolded = isFolded;
@@ -53,7 +52,7 @@ public class OrigamiFace : MonoBehaviour
                     transform.localRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, targetRot);
                 }
             }
-            else
+            else // Keep lerping
             {
                 float angle = Mathf.LerpAngle(originalRot, targetRot, rotTimer);
 
@@ -73,7 +72,8 @@ public class OrigamiFace : MonoBehaviour
         }
     }
 
-    public void ToggleFold() // Changes the position of the origami face
+    // Changes the position of the origami face
+    public void ToggleFold() 
     {
         if (!moving)
         {

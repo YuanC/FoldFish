@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Door/Key logic
 public class Key : MonoBehaviour
 {
     public GameObject Door;
 
-    // Start is called before the first frame update
     void Start()
     {
         GetComponentInChildren<Renderer>().material.color = Door.GetComponentInChildren<Renderer>().material.color;
